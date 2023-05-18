@@ -10,7 +10,7 @@ int main(){
     float nota[3];
     char nome[20];
     int idade;
-    float media;
+    float media, soma;
     int i;
     
 //FIM DECLARACAO DE VARIAVEIS
@@ -22,7 +22,7 @@ printf("Digite a idade do aluno\n");
 scanf("%d",&idade);
 
 for (i=0; i <= 2; i++){
-    printf("Digite sua nota","%f",i);
+    printf("Digite sua nota\n");
     scanf("%f",&nota[i]);  
 }
 
@@ -31,8 +31,12 @@ for (i=0; i <= 2; i++){
 //calculos
 
 for (i=0; i <= 2; i++) {
-    media = media + nota[i];
+    soma = soma + nota[i]; 
+    
 }
+// DAR A MEDIA
+ media = (soma / 3);
+
 
 // imprimir na tela
 printf("Nome: %s\n", nome);
