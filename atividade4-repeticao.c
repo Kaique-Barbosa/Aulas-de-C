@@ -15,7 +15,7 @@ menor que 5, o aluno está reprovado.
 void main(){
 
     
-    float nota, soma=0, media=0;
+    float nota=0, soma=0, media=0;
     int contador=0;
     char valor;
 
@@ -24,24 +24,26 @@ do
         printf("Digite uma nota \n");
         scanf("%f", &nota);
 
+    if ((nota >= 0) && (nota <= 10)){
+
         //soma = soma + nota;
         soma += nota;
        // contador = contador + 1;
         contador++;
-
-
+    }
+    
         fflush(stdin);//limpa cache (buffer). 
         //comando necesario para realizar a pergunta abaixo
 
-        printf("Deseja digitar mais uma nota? s / n \n"); 
-        scanf("%c", &valor);
-        // outro metodo alem do fflush é adicionar um espaço " %C"0
 
         system("cls");
 
-    } while (valor == 's'); // para comparar tbm posso usar o srtcmp() no caso de string;
+    } while ( (nota >= 0) && (nota <= 10) ); // para comparar tbm posso usar o srtcmp() no caso de string;
 
-    media = soma / contador;
+
+    if ((soma != 0) && (contador > 1)){
+         media = soma / contador;
+    }
 
     if(media >=7){
     printf("PARABENS, VOCE FOI APROVADO\n");
@@ -55,6 +57,3 @@ do
 
 
 }
-
-
-
