@@ -3,7 +3,7 @@
 #include <string.h>
 #include <locale.h>
 
-int resultado(int x, int y){
+int maior_numero(int x, int y){
 
     if(x > y){
        return x;
@@ -13,10 +13,20 @@ int resultado(int x, int y){
 }
 
 
+int menor_numero(int x, int y){
 
-void main(){
+    if(x < y){
+       return x;
+    } else{
+        return y;
+    }
+}
 
-int numero1=0, numero2=0, result;
+
+
+int main(){
+
+int numero1=0, numero2=0;
 
     printf("Digite um numero\n");
     scanf("%d", &numero1);
@@ -24,6 +34,8 @@ int numero1=0, numero2=0, result;
     scanf("%d", &numero2);
 
 
-    printf ("O maior numero e: %d",resultado(numero1, numero2));
+    printf ("O maior numero e: %d\n",maior_numero(numero1, numero2));
+    printf ("O menor numero e: %d\n",menor_numero(numero1, numero2));
 
+return 0;
 }
