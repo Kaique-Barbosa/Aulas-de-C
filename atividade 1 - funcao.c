@@ -3,28 +3,27 @@
 #include <string.h>
 #include <locale.h>
 
-int maior(float numero1, float numero2){
+int resultado(int x, int y){
 
-if (numero1 > numero2){
-    return printf("Numero %f e maior", numero1);
-} else{
-    return printf("numero %f e menor", numero2);
+    if(x > y){
+       return x;
+    } else{
+        return y;
+    }
 }
 
-
-}
 
 
 void main(){
 
-float numero1, numero2;
+int numero1=0, numero2=0, result;
 
     printf("Digite um numero\n");
-    scanf("%f", &numero1);
+    scanf("%d", &numero1);
     printf("Digite o segundo numero\n");
-    scanf("%f", &numero2);
+    scanf("%d", &numero2);
 
-    printf("O resultado e: \n");
-    maior(numero1, numero2);
+
+    printf ("O maior numero e: %d",resultado(numero1, numero2));
 
 }
