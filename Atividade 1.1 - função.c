@@ -9,14 +9,14 @@
 
 /*
 
-• Crie um algoritmo que receba o nome de três disciplinas, receba três notas para
+â€¢ Crie um algoritmo que receba o nome de trÃªs disciplinas, receba trÃªs notas para
 
-cada disciplina e mostre a média ponderada de cada disciplina:
+cada disciplina e mostre a mÃ©dia ponderada de cada disciplina:
 
 
 - Exemplo:
 
-Nome da disciplina: Lógica de programação
+Nome da disciplina: LÃ³gica de programaÃ§Ã£o
 
 1a nota: 8,0 peso 3
 
@@ -24,51 +24,54 @@ Nome da disciplina: Lógica de programação
 
 3a nota: 7,0 peso 4
 
-Média: 7,9
+MÃ©dia: 7,9
 
 */
 
 
-//função para o calculo da media ponderada
+//funÃ§Ã£o para o calculo da media ponderada
 
 
-float media_ponderada(float peso[], float notas[]){
+float mediaPonderada(float peso[], float notas[][]) {
 
-  float media=0, soma=0, somaPeso=0, multNotas=0, somaNotas=0;
+  float media=0, somaPeso=0,  somaNotas=0;
   int i, j;
+  float multNotas[3][3];
   
   for (i=0; i < 3; i++){
   	
 	   for(j=0; j < 3; j++){ 
 	
-	     somaNotas += notas[i][j];
-	     multNotas = (notas[i][j] . peso[i]);
+	     // Multiplicando os notas pelo peso
+	     multNotas[i][j] = (notas[i][j] * peso[i]);
+	     
+	     //Somando o resultado das multiplicações
+	     somaNotas += multNotas[i][j];
     
   }
     
     somaPeso += peso[i];
   }
   
-  
-
-  
  media = somaNotas / somaPeso; 
   
+  return media;
   
 }
 
-void main(){
+
+// comeco do main----------------------------------------------------------------------
+
+int main(){
 
 
-//declaração de variaveis
+//declaraÃ§Ã£o de variaveis
 
 int i,j;
 
 float notas[3][3], somaNota[3], peso[3], somaPeso, media[3];
 
 char disciplina [3][250];
-
-
 
     for (i = 0; i < 3; i++){
 
@@ -77,40 +80,37 @@ char disciplina [3][250];
         gets(disciplina[i]);
 
 
-
         fflush(stdin);
-
-
 
         printf("Digite o peso: \n");
 
         scanf("%f", &peso[i]);
 
-
-
             for (j = 0; j < 3; j++){
 
                 printf("Digite a nota %d\n", j+1);
 
-                scanf("%f", &notas[i][j]);
-
-               //somaNota[i] += notas[i][j];
-
+                scanf("%f", &notas[i][j]);      
             }
-
-        //somaNota[i] = somaNota[i] * peso[i];
-
-        //somaPeso += peso[i];
-        
-       // media[i] = (somaNota[i] / somaPeso);
-         
-        // chamando a função
-
+      
+		
         fflush(stdin);
-
         system("cls");   
 		
-		media_ponderada(notas[], peso[]);
-
     }
+    
+    // mostrando na tela
+    
+    for(i = 0; i < 3; i++){
+    	printf("Materia: %s", disciplina[i]);
+    	
+	    	for (j = 0; j < 3; j++){
+	    		printf("nota: %f",notas[i][j]);
+			}
+		}
+		
+    	// chamando a variavel
+    	printf( "A media e: %f \n",mediaPonderada(peso, notas));
+    	
+    	return 0;
 }
