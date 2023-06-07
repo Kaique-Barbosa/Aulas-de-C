@@ -31,24 +31,18 @@ Média: 7,9
 
 //função para o calculo da media ponderada
 
-float somaNotas(float nota){
 
- int soma=0;
+float media_ponderada(float peso[], float notas[]){
 
- soma += nota;
-
-}
-
-float media_ponderada(float *peso, int contador, float *notas){
-
-  float media=0, soma=0, somaPeso=0, multNotas=0;
+  float media=0, soma=0, somaPeso=0, multNotas=0, somaNotas=0;
   int i, j;
   
-  for (i=0; i < contador; i++){
-   for(j=0; j < contador; j++){ 
-
-     somaNotas += notas[i][j];
-     multNotas = notas[i][j] . peso[i];
+  for (i=0; i < 3; i++){
+  	
+	   for(j=0; j < 3; j++){ 
+	
+	     somaNotas += notas[i][j];
+	     multNotas = (notas[i][j] . peso[i]);
     
   }
     
@@ -100,50 +94,23 @@ char disciplina [3][250];
 
                 scanf("%f", &notas[i][j]);
 
-                
-
                //somaNota[i] += notas[i][j];
 
             }
 
         //somaNota[i] = somaNota[i] * peso[i];
 
-        somaPeso += peso[i];
+        //somaPeso += peso[i];
         
        // media[i] = (somaNota[i] / somaPeso);
          
         // chamando a função
-        
-
-
 
         fflush(stdin);
 
-        system("cls");    
+        system("cls");   
+		
+		media_ponderada(notas[], peso[]);
 
     }
-
-
-// fazer os calculos da media
-
-
-    for ( i = 0; i < 3; i++){
-
-            for (j = 0; j < 3; i++){
-
-
-
-
-            }
-
-            
-
-
-
-    }
-
-    
-
-    
-
-      }
+}
