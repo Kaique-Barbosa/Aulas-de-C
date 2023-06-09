@@ -6,7 +6,6 @@
 
 #include <locale.h>
 
-
 /*
 
 â€¢ Crie um algoritmo que receba o nome de trÃªs disciplinas, receba trÃªs notas para
