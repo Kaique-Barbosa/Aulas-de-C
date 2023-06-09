@@ -18,11 +18,13 @@ cada disciplina e mostre a mÃ©dia ponderada de cada disciplina:
 
 Nome da disciplina: LÃ³gica de programaÃ§Ã£o
 
-1a nota: 8,0 peso 3
+peso 3
 
-2a nota: 9,0 peso 3
+1a nota: 5,0 
 
-3a nota: 7,0 peso 4
+2a nota: 5,0 
+
+3a nota: 5,0 
 
 MÃ©dia: 7,9
 
@@ -31,32 +33,33 @@ MÃ©dia: 7,9
 
 //funÃ§Ã£o para o calculo da media ponderada
 
+float mediaPonderada(float peso[], float notas[][3]) {
 
-float mediaPonderada(float peso[], float notas[][]) {
-
-  float media=0, somaPeso=0,  somaNotas=0;
+  float media=0, somaPeso=0,  somaNotas[3], somaResultado=0;
   int i, j;
-  float multNotas[3][3];
+  float multNotas[3];
   
   for (i=0; i < 3; i++){
   	
 	   for(j=0; j < 3; j++){ 
 	
-	     // Multiplicando os notas pelo peso
-	     multNotas[i][j] = (notas[i][j] * peso[i]);
+      //somando os as 3 notas de uma unidade
+      somaNotas[i] += notas[i][j]; 
+  }
+      //somando os valores de todos os pesos
+      somaPeso += peso[i];
+
+      // Multiplicando a soma das 3 notas pelo  peso
+	    multNotas[i] = ((somaNotas[i] / 3) * peso[i]);
 	     
 	     //Somando o resultado das multiplicações
-	     somaNotas += multNotas[i][j];
+	    somaResultado += multNotas[i]; 
+
+    media = (somaResultado / somaPeso);
     
   }
-    
-    somaPeso += peso[i];
-  }
-  
- media = somaNotas / somaPeso; 
   
   return media;
-  
 }
 
 
@@ -64,12 +67,10 @@ float mediaPonderada(float peso[], float notas[][]) {
 
 int main(){
 
-
 //declaraÃ§Ã£o de variaveis
-
 int i,j;
 
-float notas[3][3], somaNota[3], peso[3], somaPeso, media[3];
+float notas[3][3], somaNota[3], peso[3], media[3];
 
 char disciplina [3][250];
 
@@ -102,15 +103,17 @@ char disciplina [3][250];
     // mostrando na tela
     
     for(i = 0; i < 3; i++){
-    	printf("Materia: %s", disciplina[i]);
+    	printf("Materia: %s\n", disciplina[i]);
     	
 	    	for (j = 0; j < 3; j++){
-	    		printf("nota: %f",notas[i][j]);
+	    		printf("nota: %.1f\n",notas[i][j]);
 			}
+      printf("Peso: %1.f\n\n", peso[i]);
+     
 		}
-		
+		 printf("-----------------------------------------");
     	// chamando a variavel
-    	printf( "A media e: %f \n",mediaPonderada(peso, notas));
+    	printf( "A media e: %.1f \n",mediaPonderada(peso, notas));
     	
     	return 0;
 }
