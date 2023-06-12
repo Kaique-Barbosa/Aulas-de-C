@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 #include <string.h>
-
 #include <locale.h>
+#include <time.h>
 
 /*
 
@@ -16,8 +16,6 @@ int menu(int numero){
 
   int opcao;
 
-  
-
   printf("1 para multiplicação\n");
 
   printf("2 para divisão\n");
@@ -28,7 +26,7 @@ int menu(int numero){
 
   scanf("%d", &opcao);
 
-  
+  //sleep(5);
 
   return opcao;
 
@@ -40,11 +38,9 @@ void mult(int numero){
 
    int resultado=0;
 
-  
+system("cls");
 
-system("clear");
-
-  for(i=0; i < numero; i++){
+  for(i=0; i <= numero; i++){
 
     printf("%d x %d = %d\n",numero,i, resultado = numero * i);
 
@@ -52,21 +48,17 @@ system("clear");
 
 }
 
-void divi(int numero){
+void divi(float numero){
 
-  
+ float i;
 
- int i;
-
-   int resultado=0;
-
-  
+   float resultado=0;
 
 system("cls");
 
   for(i=0; i < numero; i++){ 
 
-    printf("%d / %d = %d\n", numero, i, resultado = numero / i);
+    printf("%f / %f = %.2f\n", numero, i+1, resultado = numero / (i+1));
 
   }
 
@@ -74,17 +66,13 @@ system("cls");
 
 void soma(int numero){
 
-  
-
  int i;
 
    int resultado=0;
 
-  
-
 system("cls");
 
-  for(i=0; i < numero; i++){
+  for(i=0; i <= numero; i++){
 
     printf("%d + %d = %d\n",numero, i, resultado = numero + i);
 
@@ -100,11 +88,9 @@ void sub(int numero){
 
    int resultado=0;
 
-  
-
 system("cls");
 
-  for(i=0; i < numero; i++){ 
+  for(i=0; i <= numero; i++){ 
 
     printf("%d - %d = %d\n",numero, i, resultado = numero - i);
 
@@ -120,7 +106,7 @@ int main(){
 
   int numero=0;
 
-  int opcao;
+  int opcao=0;
 
   char resposta;
 
@@ -134,42 +120,42 @@ do{
 
   opcao = menu(numero);
 
-   if(opcao == 1){
+  switch (opcao){
+  case 1:
+    mult(numero);
+    break;
 
-     mult(numero);
-
-   }
-
-  if(opcao == 2){
-
+    case 2: 
     divi(numero);
+    break;
 
-  }
+    case 3:
+    soma(numero);
+    break;
 
-  if(opcao == 3){
-
-     soma(numero);
-
- }
-
- if(opcao == 4){
-
-     sub(numero);
-
+    case 4:
+    sub(numero);
+    break;
+  
+  default:
+        printf("Opcao incorreta!");
+    break;
   }
 
    
 
-  printf("/n /n");
+  printf("\n");
 
   printf("deseja outra tabuada?\n");
 
   printf("s /n \n");
 
+  fflush(stdin);
+
   scanf("%c", &resposta);
 
   //fflush(stdin);
-
+    system("cls");
 }while(resposta == 's');
 
     	return 0;}
