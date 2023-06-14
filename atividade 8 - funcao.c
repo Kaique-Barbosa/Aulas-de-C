@@ -20,20 +20,20 @@ maior que 10 ou menor que 0;
 int menu(int i){
 int resposta;
 
-printf("Escolha uma opcao");
+printf("Escolha uma opcao\n");
 printf("\n \n");
 
-printf("[ 1 ] – Mostrar nome da disciplina e a média");
-printf("[ 2 ] – O nome da disciplina e a situação (aprovado, reprovado ou recuperação)");
-printf("[ 3 ] – Exibir todas as informações");
-printf("[ 0 ] – Sair do programa");
+printf("[ 1 ]  Mostrar nome da disciplina e a media\n");
+printf("[ 2 ]  O nome da disciplina e a situacao (aprovado, reprovado ou recuperacao)\n");
+printf("[ 3 ]  Exibir todas as informacoes\n");
+printf("[ 0 ]  Sair do programa\n");
 
 scanf("%d", &resposta);
 
 if(resposta >= 0 && resposta <= 3 ){
 return  resposta;
 }else{
-    printf("ERROR!");
+    printf("ERROR!\n");
 }
 }
 
@@ -46,63 +46,85 @@ float media(float notas[][2]){
         for ( j = 0; j < 2; j++){
             somaNota += notas[i][j];
         }
-            mediaFinal = somaNota / j; 
+        mediaFinal += somaNota / j; 
+        somaNota=0;
     }
+     mediaFinal = mediaFinal / i;
      return mediaFinal;
 }
 
-void mostrarNomeEmedia(char disciplina[250], float media[][2]){
+void mostrarNomeEmedia(char disciplina[][250], float notas[][2]){
     int i,j;
 
     for ( i = 0; i < 3; i++){
-        for (  j= 0; j < 2; j++){
-        printf("Disciplina %s", disciplina);
-        printf("Media: %f", media);    
+        printf("Disciplina %s\n", disciplina[i]);
+        printf("\n");
+
+        for (j= 0; j < 2; j++){
+        printf("nota %d: %.2f\n", j+1,notas[i][j]);    
+        printf("\n");
         }
     }
+
+    printf("Media: %f", media(notas));
+
 }
 
-void mostrarNomeEsituacao(char nome[][250]){
+void mostrarNomeEsituacao(char disciplina[][250], float notas[][2]){
     
     int i;
     for ( i = 0; i < 3; i++){
-       
-        printf("Materia: %s\n", nome[i][250]);
+        printf("Materia: %s\n", disciplina[i]);
      
     }
-/*
+
     printf("Situacao: \n");
-if (mediaFinal > 7){
+if (media(notas) > 7){
         printf("APROVADO");
     }else{
         printf("REPROVADO");
     }
-*/
+
 
 }
 
-//void mostrarTudo(mostrarNomeEmedia(),mostrarNomeEsituacao()){
-    
+void mostrarTudo(nomeDisciplina, notas){
+
+    mostrarNomeEmedia(nomeDisciplina, notas);
+    printf("\n \n");
+    mostrarNomeEsituacao(nomeDisciplina, notas);
 }
 
-void main(){
+int main(){
     char nomeDisciplina[3][250];
     float notas[3][2];
     int i,j;
 
+    
     for ( i = 0; i < 3; i++){
-        printf("Digite a disciplina");
+        printf("Digite a disciplina\n");
         gets(nomeDisciplina[i]);
 
         fflush(stdin);
 
         for ( j = 0; j < 2; j++){
-            printf("Digite o a nota %d", i+1);
-            scanf("%f", &notas[i][j]);  
-        }        
+            printf("Digite o a nota %d\n", j+1);
+            scanf("%f", &notas[i][j]);   
+
+           
+        } 
+         if((notas[i][j] <= 10) && (notas[i][j] >= 0)){
+            system("cls");
+            printf("ERROR! Foi digitado um valor negativo ou acima de 10\n");
+            return 0;
+            }  
+        
+        fflush(stdin);
+        system("cls");       
     }
     
-    switch (menu(1)){
+
+    switch (menu(i)){
     case 0:
         /* code */
         break;
@@ -110,13 +132,17 @@ void main(){
         mostrarNomeEmedia(nomeDisciplina, notas);
         break;
     case 2:
-        mostrarNomeEsituacao(nomeDisciplina);
+        mostrarNomeEsituacao(nomeDisciplina, notas);
         break;
     case 3:
-        /* code */
+        mostrarTudo(nomeDisciplina, notas);
+       
         break;
     
     default:
+        printf("ERROR!!!!, REENICIE O PROGRAMA!");
         break;
     }
+
+    return 0;
 }
