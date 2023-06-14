@@ -113,10 +113,10 @@ int main(){
 
            
         } 
-         if((notas[i][j] <= 10) && (notas[i][j] >= 0)){
-            system("cls");
-            printf("ERROR! Foi digitado um valor negativo ou acima de 10\n");
-            return 0;
+        // if((notas[i][j] <= 10) && (notas[i][j] >= 0)){
+         //   system("cls");
+         //   printf("ERROR! Foi digitado um valor negativo ou acima de 10\n");
+         //   return 0;
             }  
         
         fflush(stdin);
