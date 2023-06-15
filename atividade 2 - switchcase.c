@@ -24,15 +24,17 @@ int codigo[3];
 float valor[3];
 
 // banco de dados//
-produto[0][250] = "detergente";
+strcpy(produto[0],"detergente");
 codigo[0] = 100; //codigo do produto
 valor[0] = 1.59; //valor unitario
 
-produto[1][250] = "esponja";
+strcpy(produto[1],"esponja");
+
 codigo[1] = 101; //codigo do produto
 valor[1] = 4.59;//valor unitario
 
-produto[2][250] = "la de aco";
+strcpy(produto[2],"la de aco");
+//produto[2][250] = "la de aco";
 codigo[2] = 102;//codigo do produto
 valor[2] = 1.79;//valor unitario
   //fim banco de dados  
