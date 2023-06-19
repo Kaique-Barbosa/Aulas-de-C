@@ -27,7 +27,7 @@ struct user_dados{
 int main(void){
 
 int i,j;
-float media=0, somaMedia=0;
+float  mediaTotal=0;
 struct user_dados user[10];
 
 for (i = 0; i < 10; i++){
@@ -54,7 +54,10 @@ for (i = 0; i < 10; i++){
     fflush(stdin);
     system("cls");
 
+    mediaTotal+= user[i].media;
 }
+
+mediaTotal = mediaTotal / i;
 
 //mostrar
 
@@ -65,5 +68,6 @@ for ( i = 0; i < 10; i++){
     printf("Media: %.2f\n", user[i].media);
     printf("-----------------------\n\n");
 }
+    printf("Media total: %.2f\n", mediaTotal);
     system("pause");
 }
