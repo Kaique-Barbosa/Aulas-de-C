@@ -19,14 +19,16 @@ struct aluno_dados{
     char nome[250];
     int matricula;
     float nota[3];
-
-    
+    float media;
 };
 
 int main(void){
 
 struct aluno_dados user[5];
+float media=0;
 int i,j;
+float maiorNota = INT_MIN, maiorMedia = INT_MIN, menorMedia = INT_MAX;
+
 
 for ( i = 0; i < 5; i++){
     
@@ -36,17 +38,55 @@ for ( i = 0; i < 5; i++){
     fflush(stdin);
 
     printf("Digite o Numero da matricula: \n");
-    scanf("%d", user[i].matricula);
+    scanf("%d", &user[i].matricula);
 
     for ( j = 0; j < 3; j++){
         printf("Digite a nota %d: \n", j+1);
         scanf("%f", &user[i].nota[j]);    
-    }
 
+        // definir a media
+        user[i].media += user[i].nota[j];
+
+                //(b) definir a maior nota
+            if(user[i].nota[j] > maiorNota){
+                maiorNota = user[i].nota[i];
+            }
+
+    }
+        // (c)calcular a media geral:
+        user[i].media = (user[i].media / 3);
+
+        //Definir a maior media e menor media
+        if(user[i].media > maiorMedia){
+            maiorMedia = user[i].media;
+        }
+        if(user[i].media < menorMedia){
+            menorMedia = user[i].media;
+        }
     fflush(stdin);
+    system("cls");
 
 }
 
+// mostrar dados
 
+for ( i = 0; i < 5; i++){
+    printf("Nome Aluno: %s\n", user[i].nome);
+    printf("Matricula: %d\n",user[i].matricula);
+    printf("Maior nota: %f\n",maiorNota);
+    printf("Maior media: %f\n", maiorMedia);
+    printf("Menor media: %f\n", menorMedia);
 
+   // for ( j = 0; j < 3; j++){
+        // definir se foi aprovado meida 6
+        if(user[i].media > 6){
+            printf("Media: %.2f\n", user[i].media);
+            printf("Aprovado\n\n");
+        }else{
+            printf("Media: %.2f\n", user[i].media);
+            printf("Reprovado\n\n");
+        }
+   // }
+    printf("---------------------------------\n\n");
+}
 }
